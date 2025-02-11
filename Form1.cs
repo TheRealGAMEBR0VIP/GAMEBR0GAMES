@@ -2,44 +2,55 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using GAMEBR0GAMES.UserControls;
-using GAMEBR0GAMES.Config; // Added this line
+using GAMEBR0GAMES.Config;
 
 namespace GAMEBR0GAMES
 {
     public partial class Form1 : Form
     {
-        public required Panel topBar = new Panel();
-        public required Panel leftBar = new Panel();
-        public required Panel rightBar = new Panel();
-        public required Panel bottomBar = new Panel();
-        public required SlantedPanel hudPanel = new SlantedPanel();
-        public required SlantedPanel mainPanel = new SlantedPanel();
-        public required DayZAddonBuilder dayZBuilder; // Declare without initialization
-        public const int PANEL_GAP = 20;
-        public const int SIDE_MARGIN = 50;
+        private Panel topBar;
+        private Panel leftBar;
+        private Panel rightBar;
+        private Panel bottomBar;
+        private SlantedPanel hudPanel;
+        private SlantedPanel mainPanel;
+        private DayZAddonBuilder dayZBuilder;
+        private const int PANEL_GAP = 20;
+        private const int SIDE_MARGIN = 50;
 
         // Store the validated paths
-        public required string diagExePath = string.Empty;
-        public required string serverExePath = string.Empty;
-        public required string workbenchExePath = string.Empty;
+        private string diagExePath;
+        private string serverExePath;
+        private string workbenchExePath;
 
-public Form1()
-{
-    InitializeComponent();
-    SetupBars();
-    SetupPanels();
-    this.StartPosition = FormStartPosition.CenterScreen;
-    this.Resize += Form1_Resize;
+        public Form1()
+        {
+            InitializeComponent();
+            InitializeFields();
+            SetupBars();
+            SetupPanels();
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.Resize += Form1_Resize;
+        }
 
-    // Initialize dayZBuilder with a new ServerConfig instance
-    dayZBuilder = new DayZAddonBuilder(new ServerConfig());
-    dayZBuilder.PathsValidated += DayZBuilder_PathsValidated; // Updated to match the new event signature
+        private void InitializeFields()
+        {
+            topBar = new Panel();
+            leftBar = new Panel();
+            rightBar = new Panel();
+            bottomBar = new Panel();
+            hudPanel = new SlantedPanel();
+            mainPanel = new SlantedPanel();
+            
+            // Initialize dayZBuilder with a new ServerConfig instance
+            dayZBuilder = new DayZAddonBuilder(new ServerConfig());
+            dayZBuilder.PathsValidated += DayZBuilder_PathsValidated;
 
-    // Initialize other required members
-    diagExePath = string.Empty;
-    serverExePath = string.Empty;
-    workbenchExePath = string.Empty;
-}
+            // Initialize path fields
+            diagExePath = string.Empty;
+            serverExePath = string.Empty;
+            workbenchExePath = string.Empty;
+        }
 
         private void SetupBars()
         {
@@ -112,20 +123,17 @@ public Form1()
             hudPanel.Controls.Add(serverProfileBtn);
         }
 
-        private void DayZBuilder_PathsValidated(object sender, PathsValidatedEventArgs e) // Updated signature
+        private void DayZBuilder_PathsValidated(object? sender, PathsValidatedEventArgs e)
         {
             // Store the validated paths
             diagExePath = e.DiagPath;
             serverExePath = e.ServerPath;
             workbenchExePath = e.WorkbenchPath;
 
-            // Here you can proceed with using these paths
-            // For example, you might want to save them to a configuration file
-            // or use them to launch the applications
             MessageBox.Show("Paths validated and saved successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void Form1_Resize(object sender, EventArgs e)
+        private void Form1_Resize(object? sender, EventArgs e)
         {
             if (hudPanel != null && mainPanel != null)
             {

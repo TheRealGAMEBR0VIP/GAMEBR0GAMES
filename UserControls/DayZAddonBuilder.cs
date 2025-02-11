@@ -1,39 +1,30 @@
 using System;
 using System.Drawing;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using System.IO;
-using System.Diagnostics; // Added for Process
+using System.Diagnostics;
 using GAMEBR0GAMES.Config;
 
 namespace GAMEBR0GAMES.UserControls
 {
     public partial class DayZAddonBuilder : UserControl
     {
-private TextBox diagExeTextBox;
+        private TextBox diagExeTextBox;
+        private TextBox serverExeTextBox;
+        private TextBox workbenchExeTextBox;
+        private Button mainButton;
+        private TabControl tabControl;
+        private ServerTabPage serverTab;
 
-private TextBox serverExeTextBox;
+        public event EventHandler<PathsValidatedEventArgs> PathsValidated;
 
-private TextBox workbenchExeTextBox;
+        private ServerConfig config;
 
-private Button mainButton;
-
-private TabControl tabControl;
-
-private Panel modEntriesPanel;
-
-private TabPage serverTab;
-
-public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to use the event args
-
-
-
-        private ServerConfig config; // Use the correct class name
-
-        public DayZAddonBuilder(ServerConfig configInstance) // Pass the config instance in the constructor
+        public DayZAddonBuilder(ServerConfig configInstance)
         {
-            this.config = configInstance; // Assign the passed instance to the class variable
+            this.config = configInstance;
             InitializeComponent();
+            CheckServerTabVisibility();
         }
 
         private void InitializeComponent()
@@ -65,13 +56,13 @@ public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to
                 }
             };
 
-            // Add row styles to control heights
+            // Add row styles
             for (int i = 0; i < 8; i++)
             {
                 createProfilePanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 40));
             }
 
-            // Title Label for Create Profile
+            // Title Label
             var titleLabel = new Label
             {
                 Text = "NEW PROFILE",
@@ -84,12 +75,12 @@ public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to
             createProfilePanel.Controls.Add(titleLabel, 0, 0);
             createProfilePanel.SetColumnSpan(titleLabel, 2);
 
-            // Add exe inputs to Create Profile tab
+            // Add exe inputs
             AddExeInput(createProfilePanel, "DayZDiag.exe", config.DiagExePath, 1, "DayZDiag_x64.exe");
             AddExeInput(createProfilePanel, "DayZServer_x64.exe", config.ServerExePath, 3, "DayZServer_x64.exe");
             AddExeInput(createProfilePanel, "Workbench.exe", config.WorkbenchExePath, 5, "workbenchApp.exe");
 
-            // Main Button (Create/Launch Server)
+            // Main Button
             mainButton = new Button
             {
                 Text = "Create",
@@ -102,15 +93,27 @@ public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to
             };
             mainButton.Click += MainButton_Click;
 
-            // Add components to tabs
             createProfileTab.Controls.Add(createProfilePanel);
-
-            // Add initial tab to control
             tabControl.Controls.Add(createProfileTab);
 
-            // Add components to form
             this.Controls.Add(mainButton);
             this.Controls.Add(tabControl);
+        }
+
+        private void CheckServerTabVisibility()
+        {
+            string batchFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GAMEBR0GAMES", "Server.bat");
+            if (File.Exists(batchFilePath) && serverTab == null)
+            {
+                CreateServerTab();
+            }
+        }
+
+        private void CreateServerTab()
+        {
+            serverTab = new ServerTabPage(config);
+            tabControl.Controls.Add(serverTab);
+            tabControl.SelectedTab = serverTab;
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
@@ -186,38 +189,28 @@ public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to
         {
             if (tabControl.SelectedTab.Text == "Server")
             {
-                // Launch the Server.bat file instead of the DayZ executable
-                string batchFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GAMEBR0GAMES", "Server.bat");
-                try
+                if (serverTab != null)
                 {
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = batchFilePath,
-                        WorkingDirectory = Path.GetDirectoryName(batchFilePath),
-                        UseShellExecute = true
-                    });
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Failed to launch server: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    serverTab.LaunchServer();
                 }
             }
             else if (ValidatePaths())
             {
-                // Save paths to config
                 config.DiagExePath = diagExeTextBox.Text;
                 config.ServerExePath = serverExeTextBox.Text;
                 config.WorkbenchExePath = workbenchExeTextBox.Text;
                 config.Save();
 
-                // Create the Debugprofile.cfg file using DebugProfileGenerator
                 DebugProfileGenerator.GenerateDebugProfile("Debugprofile.cfg");
-
-                // Create the Server.bat file using BatchFileGenerator
                 BatchFileGenerator.GenerateBatchFile("Server.bat", diagExeTextBox.Text, serverExeTextBox.Text);
 
-                // Create the Server tab
                 CreateServerTab();
+                
+                PathsValidated?.Invoke(this, new PathsValidatedEventArgs(
+                    diagExeTextBox.Text,
+                    serverExeTextBox.Text,
+                    workbenchExeTextBox.Text
+                ));
             }
         }
 
@@ -240,6 +233,7 @@ public event EventHandler<PathsValidatedEventArgs> PathsValidated; // Updated to
             return true;
         }
     }
+
     public class PathsValidatedEventArgs : EventArgs
     {
         public string DiagPath { get; }
