@@ -8,48 +8,31 @@ namespace GAMEBR0GAMES
 {
     public partial class Form1 : Form
     {
-        private Panel topBar;
-        private Panel leftBar;
-        private Panel rightBar;
-        private Panel bottomBar;
-        private SlantedPanel hudPanel;
-        private SlantedPanel mainPanel;
+        private Panel topBar = new();
+        private Panel leftBar = new();
+        private Panel rightBar = new();
+        private Panel bottomBar = new();
+        private SlantedPanel hudPanel = new();
+        private SlantedPanel mainPanel = new();
         private DayZAddonBuilder dayZBuilder;
         private const int PANEL_GAP = 20;
         private const int SIDE_MARGIN = 50;
 
         // Store the validated paths
-        private string diagExePath;
-        private string serverExePath;
-        private string workbenchExePath;
+        private string diagExePath = string.Empty;
+        private string serverExePath = string.Empty;
+        private string workbenchExePath = string.Empty;
 
         public Form1()
         {
             InitializeComponent();
-            InitializeFields();
+            dayZBuilder = new DayZAddonBuilder(new ServerConfig());
+            dayZBuilder.PathsValidated += DayZBuilder_PathsValidated;
+
             SetupBars();
             SetupPanels();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Resize += Form1_Resize;
-        }
-
-        private void InitializeFields()
-        {
-            topBar = new Panel();
-            leftBar = new Panel();
-            rightBar = new Panel();
-            bottomBar = new Panel();
-            hudPanel = new SlantedPanel();
-            mainPanel = new SlantedPanel();
-            
-            // Initialize dayZBuilder with a new ServerConfig instance
-            dayZBuilder = new DayZAddonBuilder(new ServerConfig());
-            dayZBuilder.PathsValidated += DayZBuilder_PathsValidated;
-
-            // Initialize path fields
-            diagExePath = string.Empty;
-            serverExePath = string.Empty;
-            workbenchExePath = string.Empty;
         }
 
         private void SetupBars()

@@ -1,36 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OffHD\\New folder\\GAMEBR0GAMES_V2\\GAMEBR0GAMES\\GAMEBR0GAMES.csproj": {}
+    "/project/sandbox/user-workspace/GAMEBR0GAMES/GAMEBR0GAMES.csproj": {}
   },
   "projects": {
-    "D:\\OffHD\\New folder\\GAMEBR0GAMES_V2\\GAMEBR0GAMES\\GAMEBR0GAMES.csproj": {
+    "/project/sandbox/user-workspace/GAMEBR0GAMES/GAMEBR0GAMES.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OffHD\\New folder\\GAMEBR0GAMES_V2\\GAMEBR0GAMES\\GAMEBR0GAMES.csproj",
+        "projectUniqueName": "/project/sandbox/user-workspace/GAMEBR0GAMES/GAMEBR0GAMES.csproj",
         "projectName": "GAMEBR0GAMES",
-        "projectPath": "D:\\OffHD\\New folder\\GAMEBR0GAMES_V2\\GAMEBR0GAMES\\GAMEBR0GAMES.csproj",
-        "packagesPath": "C:\\Users\\berry\\.nuget\\packages\\",
-        "outputPath": "D:\\OffHD\\New folder\\GAMEBR0GAMES_V2\\GAMEBR0GAMES\\obj\\",
+        "projectPath": "/project/sandbox/user-workspace/GAMEBR0GAMES/GAMEBR0GAMES.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/project/sandbox/user-workspace/GAMEBR0GAMES/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\berry\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0-windows"
+          "net7.0-windows"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0-windows7.0": {
-            "targetAlias": "net8.0-windows",
+          "net7.0-windows7.0": {
+            "targetAlias": "net7.0-windows",
             "projectReferences": {}
           }
         },
@@ -43,12 +37,11 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+        }
       },
       "frameworks": {
-        "net8.0-windows7.0": {
-          "targetAlias": "net8.0-windows",
+        "net7.0-windows7.0": {
+          "targetAlias": "net7.0-windows",
           "imports": [
             "net461",
             "net462",
@@ -60,6 +53,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.17, 7.0.17]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
@@ -68,7 +79,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.203/RuntimeIdentifierGraph.json"
         }
       }
     }
