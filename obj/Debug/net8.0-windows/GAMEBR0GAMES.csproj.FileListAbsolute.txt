@@ -1,0 +1,17 @@
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\bin\Debug\net8.0-windows\GAMEBR0GAMES.exe
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\bin\Debug\net8.0-windows\GAMEBR0GAMES.deps.json
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\bin\Debug\net8.0-windows\GAMEBR0GAMES.runtimeconfig.json
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\bin\Debug\net8.0-windows\GAMEBR0GAMES.dll
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\bin\Debug\net8.0-windows\GAMEBR0GAMES.pdb
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.GeneratedMSBuildEditorConfig.editorconfig
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.AssemblyInfoInputs.cache
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.AssemblyInfo.cs
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.csproj.CoreCompileInputs.cache
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.dll
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\refint\GAMEBR0GAMES.dll
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.pdb
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.genruntimeconfig.cache
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\ref\GAMEBR0GAMES.dll
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.Form1.resources
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.csproj.GenerateResource.cache
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.Properties.Resources.resources

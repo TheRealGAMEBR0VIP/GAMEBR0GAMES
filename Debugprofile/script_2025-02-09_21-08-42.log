@@ -1,0 +1,10 @@
+---------------------------------------------
+Log D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\Debugprofile\script_2025-02-09_21-08-42.log started at 09.02. 21:08:42
+
+SCRIPT       : Registered 312 temporary action enum(s), UAN==312
+SCRIPT    (W): @"scripts/3_Game/entities\pawn.c,25": Missing script declaration for method 'PawnOwnerState.SetWaterTime'
+SCRIPT    (W): @"scripts/3_Game/entities\pawn.c,25": Missing script declaration for method 'PawnOwnerState.GetWaterTime'
+SCRIPT    (W): @"scripts/3_Game/entities\pawn.c,25": Missing script declaration for method 'PawnOwnerState.SetPhysicsTimeStamp'
+SCRIPT    (W): @"scripts/3_Game/entities\pawn.c,25": Missing script declaration for method 'PawnOwnerState.GetPhysicsTimeStamp'
+SCRIPT       : ... Backlit Effects Enabled
+SCRIPT       : ~DayZGame()
