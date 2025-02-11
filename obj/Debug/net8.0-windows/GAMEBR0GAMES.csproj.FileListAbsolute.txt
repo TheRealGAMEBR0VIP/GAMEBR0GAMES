@@ -15,3 +15,4 @@ D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\ref\GA
 D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.Form1.resources
 D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.csproj.GenerateResource.cache
 D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.Properties.Resources.resources
+D:\OffHD\New folder\GAMEBR0GAMES_V2\GAMEBR0GAMES\obj\Debug\net8.0-windows\GAMEBR0GAMES.sourcelink.json

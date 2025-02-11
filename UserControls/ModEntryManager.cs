@@ -44,7 +44,7 @@ namespace GAMEBR0GAMES.UserControls
             // Hide all add buttons
             foreach (var entry in modEntries)
             {
-                entry.ShowAddButton(false);
+                entry.SetAddButtonVisibility(false);
             }
 
             // Show add button on the last valid entry
@@ -52,7 +52,7 @@ namespace GAMEBR0GAMES.UserControls
             {
                 if (modEntries[i].IsValid)
                 {
-                    modEntries[i].ShowAddButton(true);
+                    modEntries[i].SetAddButtonVisibility(true);
                     break;
                 }
             }

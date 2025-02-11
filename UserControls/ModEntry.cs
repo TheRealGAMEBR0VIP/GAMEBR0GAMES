@@ -9,6 +9,7 @@ namespace GAMEBR0GAMES.UserControls
         private TextBox modNameTextBox;
         private TextBox modPathTextBox;
         private Button browseButton;
+        private Button addButton;
         private Panel containerPanel;
 
         public string ModPath 
@@ -78,9 +79,22 @@ namespace GAMEBR0GAMES.UserControls
             };
             browseButton.Click += BrowseButton_Click;
 
+            addButton = new Button
+            {
+                Text = "+",
+                Location = new Point(400, 40),
+                Width = 30,
+                BackColor = Color.FromArgb(0, 200, 0),
+                ForeColor = Color.White,
+                FlatStyle = FlatStyle.Flat,
+                Visible = false
+            };
+            addButton.Click += (s, e) => AddNewRequested?.Invoke(this, EventArgs.Empty);
+
             containerPanel.Controls.Add(modNameTextBox);
             containerPanel.Controls.Add(modPathTextBox);
             containerPanel.Controls.Add(browseButton);
+            containerPanel.Controls.Add(addButton);
 
             this.Controls.Add(containerPanel);
         }
@@ -110,6 +124,11 @@ namespace GAMEBR0GAMES.UserControls
             {
                 ModValidated?.Invoke(this, new ModEntryValidatedEventArgs(ModPath, ModName));
             }
+        }
+
+        public void SetAddButtonVisibility(bool visible)
+        {
+            addButton.Visible = visible;
         }
     }
 

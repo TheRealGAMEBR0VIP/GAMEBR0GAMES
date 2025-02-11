@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace GAMEBR0GAMES.UserControls
 {
-    public class ServerTab : Panel
+    public class ServerTabEntry : Panel
     {
         private Button addButton;
         private bool isValid = false;
@@ -37,7 +37,7 @@ namespace GAMEBR0GAMES.UserControls
 
         public bool IsValid => isValid;
 
-        public ServerTab()
+        public ServerTabEntry()
         {
             InitializeComponent();
             modPath = string.Empty; // Initialize ModPath
@@ -81,7 +81,7 @@ namespace GAMEBR0GAMES.UserControls
         private void ValidateModEntry()
         {
             isValid = !string.IsNullOrEmpty(modPath) && !string.IsNullOrEmpty(modName);
-            ModValidated?.Invoke(this, new ModEntryValidatedEventArgs(isValid));
+            ModValidated?.Invoke(this, new ModEntryValidatedEventArgs(modPath, modName));
         }
 
         public void ShowAddButton(bool show)

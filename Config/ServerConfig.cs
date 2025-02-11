@@ -7,19 +7,19 @@ namespace GAMEBR0GAMES.Config
 {
     public class ModInfo
     {
-        public string ModPath { get; set; }
-        public string ModName { get; set; }
+        public required string ModPath { get; set; }
+        public required string ModName { get; set; }
     }
 
     public class ServerConfig
     {
-        public string DiagExePath { get; set; }
-        public string ServerExePath { get; set; }
-        public string WorkbenchExePath { get; set; }
+        public string DiagExePath { get; set; } = string.Empty;
+        public string ServerExePath { get; set; } = string.Empty;
+        public string WorkbenchExePath { get; set; } = string.Empty;
         public List<ModInfo> Mods { get; set; } = new List<ModInfo>();
 
         private static readonly string ConfigPath = Path.Combine(
-            Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+            Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) ?? AppDomain.CurrentDomain.BaseDirectory,
             "server_config.json"
         );
 
@@ -31,6 +31,10 @@ namespace GAMEBR0GAMES.Config
                 {
                     string jsonString = File.ReadAllText(ConfigPath);
                     var config = JsonSerializer.Deserialize<ServerConfig>(jsonString);
+                    if (config == null)
+                    {
+                        return new ServerConfig();
+                    }
                     config.Mods ??= new List<ModInfo>();
                     return config;
                 }
